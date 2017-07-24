@@ -82,6 +82,7 @@
     <Compile Include="Data\Grid\GraphDataTable.cs" />
     <Compile Include="Data\Grid\TableListDataTable.cs" />
     <Compile Include="Data\Grid\UserDataTable.cs" />
+    <Compile Include="DB\UserTableDB.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

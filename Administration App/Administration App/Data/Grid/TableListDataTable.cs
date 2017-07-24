@@ -23,6 +23,7 @@ namespace Administration_App.Data.Grid
         public TableListDataTable(Context context, String Name) : base(Name)
         {
             TableListDB tableListdb = new TableListDB(context);
+            string tableID = "TableID";
             string tableName = "TableName";
             string userName = "UserName";
             string dateCreated = "DateCreated";
@@ -42,14 +43,18 @@ namespace Administration_App.Data.Grid
                 dc.Width = dataColumns[key];
                 Columns.Add(dc);
             }
-
-            
-            for (int Loop = 0; Loop < tableListdb.Count(); Loop++)
+            List<string> PrimaryKeyList = tableListdb.readString(tableID);
+            List<string> TableNameList = tableListdb.readString(tableName);
+            List<string> UserNameList = tableListdb.readString(userName);
+            List<DateTime> DateCreatedList = tableListdb.readDateTime(dateCreated);
+            int row = tableListdb.Count();
+            for (int i = 0; i < row; i += 1)
             {
                 var dataRows = new DSDataRow();
-                dataRows["  " + tableName] = "  " + tableListdb.readString(tableName, Loop);
-                dataRows[userName] = tableListdb.readString(userName, Loop);
-                dataRows[dateCreated] = tableListdb.readDateTime(dateCreated, Loop);
+                dataRows["  " + tableID] = "  " + PrimaryKeyList[i];
+                dataRows[tableName] = TableNameList[i];
+                dataRows[userName] = UserNameList[i];
+                dataRows[dateCreated] = DateCreatedList[i];
                 Rows.Add(dataRows);
             }
         }
