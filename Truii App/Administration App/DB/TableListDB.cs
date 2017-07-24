@@ -34,7 +34,7 @@ namespace Administration_App
         /// </summary>
         /// <param name="fieldName">Name of the Field</param>
         /// <returns>A list of DataTime data from the database that was recorded</returns>
-        public List<DateTime> readDateTime(string fieldName)
+        public DateTime readDateTime(string fieldName, int index)
         {
             List<DateTime> data = new List<DateTime>();
             connection.Open();
@@ -50,7 +50,7 @@ namespace Administration_App
                         data.Add((DateTime)read[fieldName]);
                     }
                     connection.Close();
-                    return data;
+                    return data[index];
                 }
             }
             catch (Exception ex)
@@ -58,7 +58,7 @@ namespace Administration_App
                 Toast.MakeText(context, ex.Message, ToastLength.Long).Show();
             }
             connection.Close();
-            return data;
+            return new DateTime();
         }
 
         /// <summary>

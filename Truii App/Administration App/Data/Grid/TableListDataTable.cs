@@ -32,7 +32,7 @@ namespace Administration_App.Data.Grid
             dataColumns.Add("  " + tableID, 100);
             dataColumns.Add(tableName, 100);
             dataColumns.Add(userName, 100);
-            //dataColumns.Add(dateCreated, 150);
+            dataColumns.Add(dateCreated, 150);
 
             foreach (var key in dataColumns.Keys)
             {
@@ -47,7 +47,6 @@ namespace Administration_App.Data.Grid
             List<string> PrimaryKeyList = tableListdb.readString(tableID);
             List<string> TableNameList = tableListdb.readString(tableName);
             List<string> UserNameList = tableListdb.readString(userName);
-            //List<string> DateCreatedList = tableListdb.readString(dateCreated);
             int row = tableListdb.Count();
             for (int i = 0; i < row; i += 1)
             {
@@ -55,7 +54,7 @@ namespace Administration_App.Data.Grid
                 dataRows["  " + tableID] = "  " + PrimaryKeyList[i];
                 dataRows[tableName] = TableNameList[i];
                 dataRows[userName] = UserNameList[i];
-                //dataRows[dateCreated] = DateCreatedList[i];
+                dataRows[dateCreated] = tableListdb.readDateTime(dateCreated, 0);
                 Rows.Add(dataRows);
             }
         }
