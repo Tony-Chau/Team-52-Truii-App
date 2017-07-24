@@ -3,5 +3,6 @@
   <PropertyGroup>
     <SelectedDevice>AVD_for_Nexus_6_by_Google</SelectedDevice>
     <DefaultDevice>AVD_for_Nexus_6_by_Google</DefaultDevice>
+    <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
   </PropertyGroup>
 </Project>
