@@ -44,7 +44,7 @@ namespace Administration_App
         {
             TableListDB Table = new TableListDB(this);
             Table.CreateTable();
-            Table.InsertData("Green", "NickConstantine", new System.DateTime(2005, 5, 16));
+            Table.InsertData("Green", "NickConstantine", new System.DateTime());
             NextPage("Table");
         }
 
