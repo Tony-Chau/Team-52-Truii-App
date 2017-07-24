@@ -23,6 +23,8 @@ namespace Administration_App.Data.Grid
         public TableListDataTable(Context context, String Name) : base(Name)
         {
             TableListDB tableListdb = new TableListDB(context);
+            tableListdb.CreateTable();
+            tableListdb.InsertData("Green", "NickConstantine", new DateTime());
             string tableID = "TableID";
             string tableName = "TableName";
             string userName = "UserName";
