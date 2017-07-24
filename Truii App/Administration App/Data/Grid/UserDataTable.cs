@@ -44,6 +44,7 @@ namespace Administration_App.Data.Grid
                 dc.Width = dataColumns[key];
                 Columns.Add(dc);
             }
+
             List<string> UserNameList = userTabledb.readString(userName);
             List<string> PassWordList = userTabledb.readString(passWord);
             int row = userTabledb.Count();

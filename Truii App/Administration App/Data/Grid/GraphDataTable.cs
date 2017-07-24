@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using DSoft.Datatypes.Grid.Data;
+using Administration_App.DB;
 
 namespace Administration_App.Data.Grid
 {
@@ -22,13 +23,20 @@ namespace Administration_App.Data.Grid
         
         public GraphDataTable(Context context, String Name) : base(Name)
         {
-            
+            //GraphTableDB graphTabledb = new GraphTableDB(context);
+            //graphTabledb.CreateTable();
+            //graphTabledb.InsertData();
+
+            string graphID = "GraphID";
+            string tableID = "TableID";
+            string userName = "UserName";
+            string dateCreated = "DateCreated";
 
             var dataColumns = new Dictionary<string, float>();
-            dataColumns.Add("  GraphID", 100);
-            dataColumns.Add("TableID", 100);
-            dataColumns.Add("UserID", 100);
-            dataColumns.Add("DateCreated", 150);
+            dataColumns.Add("  " + graphID, 100);
+            dataColumns.Add(tableID, 100);
+            dataColumns.Add(userName, 100);
+            dataColumns.Add(dateCreated, 150);
 
             foreach (var key in dataColumns.Keys)
             {
@@ -41,17 +49,15 @@ namespace Administration_App.Data.Grid
                 Columns.Add(dc);
             }
 
-            int ID;
-            for (int Loop = 0; Loop < 3; Loop++)
+            int row = 3;
+            for (int i = 0; i < row; i += 1)
             {
                 var dataRows = new DSDataRow();
-
-                ID = Loop + 1;
-
-                dataRows["  GraphID"] = "  Graph" + ID;
-                dataRows["TableID"] = "Table" + ID;
-                dataRows["UserID"] = "User" + ID;
-                dataRows["DateCreated"] = "2017/07/" + ID;
+                
+                dataRows["  " + graphID] = "  Graph" + i+1;
+                dataRows[tableID] = "Table" + i+1;
+                dataRows[userName] = "User" + i+1;
+                dataRows[dateCreated] = "2017/07/" + i+1;
 
                 Rows.Add(dataRows);
             }

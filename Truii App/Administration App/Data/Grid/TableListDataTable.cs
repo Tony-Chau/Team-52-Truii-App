@@ -46,6 +46,7 @@ namespace Administration_App.Data.Grid
                 dc.Width = dataColumns[key];
                 Columns.Add(dc);
             }
+
             List<string> PrimaryKeyList = tableListdb.readString(tableID);
             List<string> TableNameList = tableListdb.readString(tableName);
             List<string> UserNameList = tableListdb.readString(userName);

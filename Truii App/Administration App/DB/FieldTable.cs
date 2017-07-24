@@ -101,7 +101,7 @@ namespace Administration_App.DB
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = string.Format("INSERT INTO FieldTable(FieldName, TableID, DataType) VALUES( \"{0}\", {1}, {2})", FieldName, TableID, DataType);
+                    command.CommandText = string.Format("INSERT INTO FieldTable(FieldName, TableID, DataType) VALUES( \"{0}\", {1}, \"{2}\")", FieldName, TableID, DataType);
                     var rowcount = command.ExecuteNonQuery();
                 }
             }

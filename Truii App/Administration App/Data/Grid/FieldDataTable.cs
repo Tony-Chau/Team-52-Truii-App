@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using DSoft.Datatypes.Grid.Data;
+using Administration_App.DB;
 
 namespace Administration_App.Data.Grid
 {
@@ -22,13 +23,18 @@ namespace Administration_App.Data.Grid
         
         public FieldDataTable(Context context, String Name) : base(Name)
         {
-            
+            FieldTable fieldTable = new FieldTable(context);
+            fieldTable.CreateTable();
+            fieldTable.InsertData("GreenField", 1, "type");
+
+            string fieldName = "FieldName";
+            string tableID = "TableID";
+            string dataType = "DataType";
 
             var dataColumns = new Dictionary<string, float>();
-            dataColumns.Add("  FieldID", 100);
-            dataColumns.Add("FieldName", 100);
-            dataColumns.Add("TableID", 100);
-            dataColumns.Add("DataType", 100);
+            dataColumns.Add("  " + fieldName, 100);
+            dataColumns.Add(tableID, 100);
+            dataColumns.Add(dataType, 100);
 
             foreach (var key in dataColumns.Keys)
             {
@@ -41,17 +47,17 @@ namespace Administration_App.Data.Grid
                 Columns.Add(dc);
             }
 
-            int ID;
-            for (int Loop = 0; Loop < 3; Loop++)
+            List<string> FieldNameList = fieldTable.readString(fieldName);
+            List<int> TableIDList = fieldTable.readInt(tableID);
+            List<string> DataTypeList = fieldTable.readString(dataType);
+            int row = fieldTable.Count();
+            for (int i = 0; i < row; i += 1)
             {
                 var dataRows = new DSDataRow();
-
-                ID = Loop + 1;
-
-                dataRows["  FieldID"] = "  Field" + ID;
-                dataRows["FieldName"] = "FieldName" + ID;
-                dataRows["TableID"] = "Table" + ID;
-                dataRows["DataType"] = "Type" + ID;
+                
+                dataRows["  " + fieldName] = "  " + FieldNameList[i];
+                dataRows[tableID] = TableIDList[i];
+                dataRows[dataType] = DataTypeList[i];
 
                 Rows.Add(dataRows);
             }
