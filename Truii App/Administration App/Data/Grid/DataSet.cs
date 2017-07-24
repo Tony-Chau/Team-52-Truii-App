@@ -15,12 +15,25 @@ namespace Administration_App.Data.Grid
 {
     public class DataSet : DSDataSet
     {
-        public DataSet(Context EntryCode)
+        public DataSet(Context EntryCode, string tableName)
         {
-            Tables.Add(new UserDataTable(EntryCode, "User"));
-            Tables.Add(new GraphDataTable(EntryCode, "Graph"));
-            Tables.Add(new TableListDataTable(EntryCode, "Table"));
-            Tables.Add(new FieldDataTable(EntryCode, "Field"));
+            if (tableName == "User")
+            {
+                Tables.Add(new UserDataTable(EntryCode, "User"));
+            }
+            else if (tableName == "Graph"){
+                Tables.Add(new GraphDataTable(EntryCode, "Graph"));
+            }
+            else if (tableName == "Table"){
+                Tables.Add(new TableListDataTable(EntryCode, "Table"));
+            }
+            else if (tableName == "Field"){
+                Tables.Add(new FieldDataTable(EntryCode, "Field"));
+            }
+            else{
+
+            }
+            
         }
     }
 }

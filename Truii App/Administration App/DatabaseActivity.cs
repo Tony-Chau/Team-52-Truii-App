@@ -19,13 +19,14 @@ namespace Administration_App
     public class DatabaseActivity : Activity
     {
         DSGridView dsGrid;
+        string databaseName;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.DatabaseView);
             // Create your application here
             dsGrid = FindViewById<DSGridView>(Resource.Id.dataGrid);
-            string databaseName = Intent.GetStringExtra("DatabaseName");
+            databaseName = Intent.GetStringExtra("DatabaseName");
             if (databaseName == "User"){
                 OperateUser();
             }
@@ -47,7 +48,7 @@ namespace Administration_App
         {
             if (dsGrid != null)
             {
-                dsGrid.DataSource = new DataSet(this);
+                dsGrid.DataSource = new DataSet(this, databaseName);
                 dsGrid.TableName = "User";
             }
         }
@@ -56,7 +57,7 @@ namespace Administration_App
         {
             if (dsGrid != null)
             {
-                dsGrid.DataSource = new DataSet(this);
+                dsGrid.DataSource = new DataSet(this, databaseName);
                 dsGrid.TableName = "Graph";
             }
         }
@@ -65,7 +66,7 @@ namespace Administration_App
         {
             if (dsGrid != null)
             {
-                dsGrid.DataSource = new DataSet(this);
+                dsGrid.DataSource = new DataSet(this, databaseName);
                 dsGrid.TableName = "Table";
             }
         }
@@ -74,7 +75,7 @@ namespace Administration_App
         {
             if (dsGrid != null)
             {
-                dsGrid.DataSource = new DataSet(this);
+                dsGrid.DataSource = new DataSet(this, databaseName);
                 dsGrid.TableName = "Field";
             }
         }
