@@ -156,7 +156,8 @@ namespace Administration_App
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = string.Format("INSERT INTO TableList(TableName, UserName, DateCreated) VALUES( {0}, {1}, {2})", TableName, UserName, TimeCreated);
+                    command.CommandText = string.Format("INSERT INTO TableList(TableName, UserName, DateCreated) VALUES( \"{0}\", \"{1}\", {2})", TableName, UserName, TimeCreated.ToString("yyyy-mm-dd"));
+                    //command.CommandText = "INSERT INTO TableList(TableName, UserName, DateCreated) VALUES( \"" + TableName + "\", \"" + UserName + "\", " + TimeCreated.ToString("yyyy-mm-dd")+ ")";
                     var rowcount = command.ExecuteNonQuery();
                 }
             }catch (Exception ex)
