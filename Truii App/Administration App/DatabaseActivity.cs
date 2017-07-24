@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using DSoft.UI.Grid;
 using Administration_App.Data.Grid;
+using Administration_App.DB;
 
 namespace Administration_App
 {
@@ -46,6 +47,9 @@ namespace Administration_App
         {
             if (dsGrid != null)
             {
+                UserTableDB UserTable = new UserTableDB(this);
+                UserTable.CreateTable();
+                UserTable.InsertData("Nick", "Green");
                 dsGrid.DataSource = new DataSet(this);
                 dsGrid.TableName = "User";
             }
@@ -65,6 +69,7 @@ namespace Administration_App
             if (dsGrid != null)
             {
                 TableListDB Table = new TableListDB(this);
+                Table.CreateTable();
                 Table.InsertData("Green", "NickConstantine", new DateTime());
                 dsGrid.DataSource = new DataSet(this);
                 dsGrid.TableName = "Table";

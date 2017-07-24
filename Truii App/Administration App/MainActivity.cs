@@ -42,9 +42,6 @@ namespace Administration_App
 
         private void BtnTable_Click(object sender, System.EventArgs e)
         {
-            TableListDB Table = new TableListDB(this);
-            Table.CreateTable();
-            
             NextPage("Table");
         }
 
