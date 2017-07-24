@@ -115,7 +115,7 @@ namespace Administration_App
                     await connect.OpenAsync();
                     using (var command= connect.CreateCommand())
                     {
-                        command.CommandText = "CREATE TABLE TableList(TableID INTEGER PRIMARY KEY AUTOINCREMENT, TableName varchar(255) NOT NULL, UserName VARCHAR(255) NOT NULL, DateCreated DATETIME NOT NULL)";
+                        command.CommandText = "CREATE TABLE TableList(TableID INTEGER PRIMARY KEY AUTOINCREMENT, TableName VARCHAR(255) NOT NULL, UserName VARCHAR(255) NOT NULL, DateCreated DATETIME NOT NULL)";
                         command.CommandType = System.Data.CommandType.Text;
                         await command.ExecuteNonQueryAsync();
                     }
@@ -142,10 +142,6 @@ namespace Administration_App
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = string.Format("INSERT INTO TableList(TableName, UserName, DateCreated) VALUES( \"{0}\", \"{1}\", {2})", TableName, UserName, TimeCreated.ToString("yyyy-mm-dd"));
-                    var alert = new AlertDialog.Builder(this.context);
-                    alert.SetTitle("A file has been created");
-                    alert.SetMessage(command.CommandText);
-                    alert.Show();
                     var rowcount = command.ExecuteNonQuery();
                 }
             }catch (Exception ex)

@@ -65,7 +65,7 @@ namespace Administration_App
             if (dsGrid != null)
             {
                 TableListDB Table = new TableListDB(this);
-                Table.InsertData("Green", "NickConstantine", new System.DateTime());
+                Table.InsertData("Green", "NickConstantine", new DateTime());
                 dsGrid.DataSource = new DataSet(this);
                 dsGrid.TableName = "Table";
             }
