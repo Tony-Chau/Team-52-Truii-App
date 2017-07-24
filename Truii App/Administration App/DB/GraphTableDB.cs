@@ -12,15 +12,15 @@ using Android.Widget;
 using Mono.Data.Sqlite;
 using Java.IO;
 
-namespace Administration_App
+namespace Administration_App.DB
 {
-    public class TableListDB
+    public class GraphTableDB
     {
         string docsFolder;
         string path;
         SqliteConnection connection;
         Context context;
-        public TableListDB(Context context)
+        public GraphTableDB(Context context)
         {
             this.context = context;
             docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
@@ -43,7 +43,7 @@ namespace Administration_App
                 using (var command = connection.CreateCommand())
                 {
 
-                    command.CommandText = "SELECT * FROM TableList";
+                    command.CommandText = "SELECT * FROM GraphTable";
                     var read = command.ExecuteReader();
                     while (read.Read())
                     {
@@ -75,7 +75,7 @@ namespace Administration_App
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "SELECT * FROM TableList";
+                    command.CommandText = "SELECT * FROM GraphTable";
                     var read = command.ExecuteReader();
                     while (read.Read())
                     {
@@ -95,7 +95,7 @@ namespace Administration_App
 
 
         /// <summary>
-        /// Creates the TableList database within the phone's library
+        /// Creates the GraphTable database within the phone's library
         /// </summary>
         public async void CreateTable()
         {
@@ -103,7 +103,8 @@ namespace Administration_App
             try
             {
                 SqliteConnection.CreateFile(path);
-            }catch (IOException ex)
+            }
+            catch (IOException ex)
             {
                 Toast.MakeText(this.context, ex.Message, ToastLength.Long).Show();
             }
@@ -113,14 +114,15 @@ namespace Administration_App
                 using (var connect = new SqliteConnection((connectionString)))
                 {
                     await connect.OpenAsync();
-                    using (var command= connect.CreateCommand())
+                    using (var command = connect.CreateCommand())
                     {
-                        command.CommandText = "CREATE TABLE TableList(TableID INTEGER PRIMARY KEY AUTOINCREMENT, TableName VARCHAR(255) NOT NULL, UserName VARCHAR(255) NOT NULL, DateCreated DATETIME NOT NULL)";
+                        command.CommandText = "CREATE TABLE GraphTable(GraphID INTEGER PRIMARY KEY AUTOINCREMENT, TableID FOREIGN KEY REFERENCES TableList(TableID), UserName FOREIGN KEY REFERENCES UserTable(UserName), DateCreated DATETIME NOT NULL ";
                         command.CommandType = System.Data.CommandType.Text;
                         await command.ExecuteNonQueryAsync();
                     }
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Toast.MakeText(this.context, ex.Message, ToastLength.Long).Show();
             }
@@ -128,28 +130,6 @@ namespace Administration_App
         }
 
 
-        /// <summary>
-        /// Insert Data to the database
-        /// </summary>
-        /// <param name="TableName">The name of the table</param>
-        /// <param name="UserName">The name of the Username who created the table</param>
-        /// <param name="TimeCreated">The time the database was created</param>
-        public void InsertData(string TableName, string UserName, DateTime TimeCreated)
-        {
-            connection.Open();
-            try
-            {
-                using (var command = connection.CreateCommand())
-                {
-                    command.CommandText = string.Format("INSERT INTO TableList(TableName, UserName, DateCreated) VALUES( \"{0}\", \"{1}\", {2})", TableName, UserName, TimeCreated.ToString("yyyy-mm-dd"));
-                    var rowcount = command.ExecuteNonQuery();
-                }
-            }catch (Exception ex)
-            {
-                Toast.MakeText(this.context, ex.Message, ToastLength.Long).Show();
-            }
-            connection.Close();
-        }
 
         /// <summary>
         /// Counts the number of rows within the database
@@ -163,7 +143,7 @@ namespace Administration_App
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "Select * FROM TableList";
+                    command.CommandText = "Select * FROM GraphTable";
                     var read = command.ExecuteReader();
                     while (read.Read())
                     {
