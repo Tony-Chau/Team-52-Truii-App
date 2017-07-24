@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using DSoft.Datatypes.Grid.Data;
+using Administration_App.DB;
 
 namespace Administration_App.Data.Grid
 {
@@ -22,10 +23,13 @@ namespace Administration_App.Data.Grid
         
         public UserDataTable(Context context, String Name) : base(Name)
         {
+            UserTableDB userTabledb = new UserTableDB(context);
+            string userName = "UserName";
+            string passWord = "Password";
+
             var dataColumns = new Dictionary<string, float>();
-            dataColumns.Add("  UserID", 75);
-            dataColumns.Add("UserName/Email", 200);
-            dataColumns.Add("Password", 150);
+            dataColumns.Add("  " + userName, 150);
+            dataColumns.Add(passWord, 150);
 
             foreach (var key in dataColumns.Keys)
             {
@@ -37,17 +41,15 @@ namespace Administration_App.Data.Grid
                 dc.Width = dataColumns[key];
                 Columns.Add(dc);
             }
-
-            int ID;
-            for (int Loop = 0; Loop < 3; Loop++)
+            List<string> UserNameList = userTabledb.readString(userName);
+            List<string> PassWordList = userTabledb.readString(passWord);
+            int row = userTabledb.Count();
+            for (int i = 0; i < row; i += 1)
             {
                 var dataRows = new DSDataRow();
 
-                ID = Loop+1;
-
-                dataRows["  UserID"] = "  User" + ID;
-                dataRows["UserName/Email"] = "user" + ID;
-                dataRows["Password"] = "password" + ID;
+                dataRows["  " + userName] = "  " + UserNameList[i];
+                dataRows[passWord] = PassWordList[i];
 
                 Rows.Add(dataRows);
             }

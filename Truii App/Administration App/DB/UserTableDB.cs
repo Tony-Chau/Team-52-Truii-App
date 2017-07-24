@@ -42,7 +42,7 @@ namespace Administration_App.DB
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "SELECT * FROM TableList";
+                    command.CommandText = "SELECT * FROM UserTable";
                     var read = command.ExecuteReader();
                     while (read.Read())
                     {
