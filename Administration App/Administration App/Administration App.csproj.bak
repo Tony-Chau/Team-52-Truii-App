@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -44,18 +44,6 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DSoft.Datatypes">
-      <HintPath>..\lib\android\DSoft.Datatypes.dll</HintPath>
-    </Reference>
-    <Reference Include="DSoft.Datatypes.Grid">
-      <HintPath>..\lib\android\DSoft.Datatypes.Grid.dll</HintPath>
-    </Reference>
-    <Reference Include="DSoft.Themes">
-      <HintPath>..\lib\android\DSoft.Themes.dll</HintPath>
-    </Reference>
-    <Reference Include="DSoft.UI.Android">
-      <HintPath>..\lib\android\DSoft.UI.Android.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
@@ -66,11 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseActivity.cs" />
-    <Compile Include="Data\Grid\DataSet.cs" />
-    <Compile Include="Data\Grid\FieldDataTable.cs" />
-    <Compile Include="Data\Grid\GraphDataTable.cs" />
-    <Compile Include="Data\Grid\TableListDataTable.cs" />
-    <Compile Include="Data\Grid\UserDataTable.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

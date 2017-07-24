@@ -26,6 +26,8 @@ namespace Administration_App
 		
 		public static void UpdateIdValues()
 		{
+			global::DSoft.UI.Resource.Drawable.checkmark = global::Administration_App.Resource.Drawable.checkmark;
+			global::DSoft.UI.Resource.String.library_name = global::Administration_App.Resource.String.library_name;
 		}
 		
 		public partial class Attribute
@@ -45,7 +47,10 @@ namespace Administration_App
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int checkmark = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Icon = 2130837505;
 			
 			static Drawable()
 			{
@@ -60,20 +65,23 @@ namespace Administration_App
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050004
+			public const int btnField = 2131034116;
+			
 			// aapt resource value: 0x7f050003
-			public const int btnField = 2131034115;
+			public const int btnGraph = 2131034115;
 			
 			// aapt resource value: 0x7f050002
-			public const int btnGraph = 2131034114;
+			public const int btnTable = 2131034114;
 			
 			// aapt resource value: 0x7f050001
-			public const int btnTable = 2131034113;
+			public const int btnUser = 2131034113;
+			
+			// aapt resource value: 0x7f050005
+			public const int btnVarious = 2131034117;
 			
 			// aapt resource value: 0x7f050000
-			public const int btnUser = 2131034112;
-			
-			// aapt resource value: 0x7f050004
-			public const int btnVarious = 2131034116;
+			public const int dataGrid = 2131034112;
 			
 			static Id()
 			{
@@ -107,11 +115,14 @@ namespace Administration_App
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f040002
+			public const int ApplicationName = 2130968578;
+			
 			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			public const int Hello = 2130968577;
 			
 			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			public const int library_name = 2130968576;
 			
 			static String()
 			{
