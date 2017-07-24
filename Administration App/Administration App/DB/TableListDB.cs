@@ -14,13 +14,13 @@ using Java.IO;
 
 namespace Administration_App
 {
-    public class TableNameDB
+    public class TableListDB
     {
         string docsFolder;
         string path;
         SqliteConnection connection;
         Context context;
-        public TableNameDB(Context context)
+        public TableListDB(Context context)
         {
             this.context = context;
             docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
@@ -37,7 +37,7 @@ namespace Administration_App
                 using (var command = connection.CreateCommand())
                 {
 
-                    command.CommandText = "SELECT * FROM TableName";
+                    command.CommandText = "SELECT * FROM TableList";
                     var read = command.ExecuteReader();
                     while (read.Read())
                     {
@@ -64,7 +64,7 @@ namespace Administration_App
                 using (var command = connection.CreateCommand())
                 {
 
-                    command.CommandText = "SELECT * FROM TableName";
+                    command.CommandText = "SELECT * FROM TableList";
                     var read = command.ExecuteReader();
                     while (read.Read())
                     {
@@ -92,7 +92,7 @@ namespace Administration_App
                 using (var command = connection.CreateCommand())
                 {
 
-                    command.CommandText = "SELECT * FROM TableName";
+                    command.CommandText = "SELECT * FROM TableList";
                     var read = command.ExecuteReader();
                     while (read.Read())
                     {
@@ -131,7 +131,7 @@ namespace Administration_App
                     await connect.OpenAsync();
                     using (var command= connect.CreateCommand())
                     {
-                        string QueryCommand = "CREATE TABLE TableName(TableID INTEGER PRIMARY KEY AUTOINCREMENT, TableName varchar(255) NOT NULL, UserName VARCHAR(255) NOT NULL, DateCreated DATETIME NOT NULL)";
+                        string QueryCommand = "CREATE TABLE TableList(TableID INTEGER PRIMARY KEY AUTOINCREMENT, TableName varchar(255) NOT NULL, UserName VARCHAR(255) NOT NULL, DateCreated DATETIME NOT NULL)";
                         command.CommandText = QueryCommand;
                         command.CommandType = System.Data.CommandType.Text;
                         await command.ExecuteNonQueryAsync();
@@ -149,14 +149,14 @@ namespace Administration_App
         /// <param name="TableName">The name of the table</param>
         /// <param name="UserName">The name of the Username who created the table</param>
         /// <param name="TimeCreated">The time the database was created</param>
-        public async void InsertData(string TableName, string UserName, DateTime TimeCreated)
+        public void InsertData(string TableName, string UserName, DateTime TimeCreated)
         {
             connection.Open();
             try
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = string.Format("INSERT INTO TableName(TableName, UserName, DateCreated) VALUES( {0}, {1}, {2})", TableName, UserName, TimeCreated);
+                    command.CommandText = string.Format("INSERT INTO TableList(TableName, UserName, DateCreated) VALUES( {0}, {1}, {2})", TableName, UserName, TimeCreated);
                     var rowcount = command.ExecuteNonQuery();
                 }
             }catch (Exception ex)
@@ -164,6 +164,29 @@ namespace Administration_App
                 Toast.MakeText(this.context, ex.Message, ToastLength.Long).Show();
             }
             connection.Close();
+        }
+        public int Count()
+        {
+            int count = 0;
+            connection.Open();
+            try
+            {
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "Select * FROM TableList";
+                    var read = command.ExecuteReader();
+                    while (read.Read())
+                    {
+                        count += 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(this.context, ex.Message, ToastLength.Long).Show();
+            }
+            connection.Close();
+            return count;
         }
     }
 }

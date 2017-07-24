@@ -42,9 +42,9 @@ namespace Administration_App
 
         private void BtnTable_Click(object sender, System.EventArgs e)
         {
-            TableNameDB TableName = new TableNameDB(this);
-            TableName.CreateTable();
-            TableName.InsertData("Green", "NickConstantine", new System.DateTime(2005, 5, 16));
+            TableListDB Table = new TableListDB(this);
+            Table.CreateTable();
+            Table.InsertData("Green", "NickConstantine", new System.DateTime(2005, 5, 16));
             NextPage("Table");
         }
 
