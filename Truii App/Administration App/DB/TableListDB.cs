@@ -12,20 +12,53 @@ using Android.Widget;
 using Mono.Data.Sqlite;
 using Java.IO;
 
-namespace Administration_App.DB
+namespace Administration_App
 {
-    public class UserTableDB
+    public class TableListDB
     {
         string docsFolder;
         string path;
         SqliteConnection connection;
         Context context;
-        public UserTableDB(Context context)
+        public TableListDB(Context context)
         {
             this.context = context;
             docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
             path = System.IO.Path.Combine(docsFolder, "Truii.db");
             connection = new SqliteConnection("Data Source=" + path);
+        }
+
+        /// <summary>
+        /// Collects the data from the database depending on the name of the field. 
+        /// This only collects data if their type is a DateTime format
+        /// </summary>
+        /// <param name="fieldName">Name of the Field</param>
+        /// <returns>A list of DataTime data from the database that was recorded</returns>
+        public List<DateTime> readDateTime(string fieldName)
+        {
+            List<DateTime> data = new List<DateTime>();
+            connection.Open();
+            try
+            {
+                using (var command = connection.CreateCommand())
+                {
+
+                    command.CommandText = "SELECT * FROM TableList";
+                    var read = command.ExecuteReader();
+                    while (read.Read())
+                    {
+                        data.Add((DateTime)read[fieldName]);
+                    }
+                    connection.Close();
+                    return data;
+                }
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(context, ex.Message, ToastLength.Long).Show();
+            }
+            connection.Close();
+            return data;
         }
 
         /// <summary>
@@ -60,7 +93,7 @@ namespace Administration_App.DB
             return data;
         }
 
-        
+
         /// <summary>
         /// Creates the TableName database within the phone's library
         /// </summary>
@@ -70,8 +103,7 @@ namespace Administration_App.DB
             try
             {
                 SqliteConnection.CreateFile(path);
-            }
-            catch (IOException ex)
+            }catch (IOException ex)
             {
                 Toast.MakeText(this.context, ex.Message, ToastLength.Long).Show();
             }
@@ -81,44 +113,47 @@ namespace Administration_App.DB
                 using (var connect = new SqliteConnection((connectionString)))
                 {
                     await connect.OpenAsync();
-                    using (var command = connect.CreateCommand())
+                    using (var command= connect.CreateCommand())
                     {
-                        command.CommandText = "CREATE TABLE UserTable(UserName varchar(255) NOT NULL, Password VARCHAR(255) NOT NULL)";
+                        command.CommandText = "CREATE TABLE TableList(TableID INTEGER PRIMARY KEY AUTOINCREMENT, TableName varchar(255) NOT NULL, UserName VARCHAR(255) NOT NULL, DateCreated DATETIME NOT NULL)";
                         command.CommandType = System.Data.CommandType.Text;
                         await command.ExecuteNonQueryAsync();
                     }
                 }
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
                 Toast.MakeText(this.context, ex.Message, ToastLength.Long).Show();
             }
             connection.Close();
         }
 
+
         /// <summary>
-        /// Insert data to the database
+        /// Insert Data to the database
         /// </summary>
-        /// <param name="UserName">The name of the Username</param>
-        /// <param name="Password">The Username's password</param>
-        public void InsertData(string UserName, string Password)
+        /// <param name="TableName">The name of the table</param>
+        /// <param name="UserName">The name of the Username who created the table</param>
+        /// <param name="TimeCreated">The time the database was created</param>
+        public void InsertData(string TableName, string UserName, DateTime TimeCreated)
         {
             connection.Open();
             try
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = string.Format("INSERT INTO UserTable(UserName, Password) VALUES( \"{0}\", \"{1}\")", UserName, Password);
+                    command.CommandText = string.Format("INSERT INTO TableList(TableName, UserName, DateCreated) VALUES( \"{0}\", \"{1}\", {2})", TableName, UserName, TimeCreated.ToString("yyyy-mm-dd"));
+                    var alert = new AlertDialog.Builder(this.context);
+                    alert.SetTitle("A file has been created");
+                    alert.SetMessage(command.CommandText);
+                    alert.Show();
                     var rowcount = command.ExecuteNonQuery();
                 }
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
                 Toast.MakeText(this.context, ex.Message, ToastLength.Long).Show();
             }
             connection.Close();
         }
-
 
         /// <summary>
         /// Counts the number of rows within the database
@@ -132,7 +167,7 @@ namespace Administration_App.DB
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "Select * FROM UserTable";
+                    command.CommandText = "Select * FROM TableList";
                     var read = command.ExecuteReader();
                     while (read.Read())
                     {
@@ -148,6 +183,4 @@ namespace Administration_App.DB
             return count;
         }
     }
-
-}
 }

@@ -29,7 +29,8 @@ namespace Administration_App.Data.Grid
             string dateCreated = "DateCreated";
 
             var dataColumns = new Dictionary<string, float>();
-            dataColumns.Add("  " + tableName, 100);
+            dataColumns.Add("  " + tableID, 100);
+            dataColumns.Add(tableName, 100);
             dataColumns.Add(userName, 100);
             dataColumns.Add(dateCreated, 150);
 
@@ -46,7 +47,7 @@ namespace Administration_App.Data.Grid
             List<string> PrimaryKeyList = tableListdb.readString(tableID);
             List<string> TableNameList = tableListdb.readString(tableName);
             List<string> UserNameList = tableListdb.readString(userName);
-            List<DateTime> DateCreatedList = tableListdb.readDateTime(dateCreated);
+            List<string> DateCreatedList = tableListdb.readString(dateCreated);
             int row = tableListdb.Count();
             for (int i = 0; i < row; i += 1)
             {
