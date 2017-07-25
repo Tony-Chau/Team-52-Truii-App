@@ -20,6 +20,11 @@ namespace Administration_App.DB
         string path;
         SqliteConnection connection;
         Context context;
+
+        /// <summary>
+        /// Initialise the database
+        /// </summary>
+        /// <param name="context">Allows it to know which activity it is calling it from</param>
         public UserTableDB(Context context)
         {
             this.context = context;
@@ -30,7 +35,7 @@ namespace Administration_App.DB
 
         /// <summary>
         /// Collects the data from the database depending on the name of the field. 
-        /// This only collects data if their type is a string format or a primary key
+        /// This only collects data if their type is a string format or primary key
         /// </summary>
         /// <param name="fieldName">Name of the field</param>
         /// <returns>A list string data from the database that was recorded</returns>
@@ -100,7 +105,7 @@ namespace Administration_App.DB
         /// Insert data to the database
         /// </summary>
         /// <param name="UserName">The name of the Username</param>
-        /// <param name="Password">The Username's password</param>
+        /// <param name="Password">The User's password</param>
         public void InsertData(string UserName, string Password)
         {
             connection.Open();

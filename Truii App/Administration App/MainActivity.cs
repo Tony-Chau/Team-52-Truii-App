@@ -76,6 +76,11 @@ namespace Administration_App
             NextPage("CustomField");
         }
 
+        /// <summary>
+        /// Resets all the data within the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnReset_Click(object sender, System.EventArgs e)
         {
             userTabledb.CreateTable();
@@ -86,6 +91,11 @@ namespace Administration_App
             Toast.MakeText(this, "All data within the databases has been reseted", ToastLength.Long).Show();
         }
         
+        /// <summary>
+        /// Adds dummy data to the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnAdd_Click(object sender, System.EventArgs e)
         {
             userTabledb.InsertData("NickConstantine", "Green");
@@ -95,7 +105,11 @@ namespace Administration_App
             customFieldTable.InsertData(1, 1, 0, 255, 0);
             Toast.MakeText(this, "Data has beed added to all of the databases", ToastLength.Long).Show();
         }
-
+        
+        /// <summary>
+        /// Sends the user to the database page
+        /// </summary>
+        /// <param name="DatabaseName">delivers the name to the next page to know which database it wants to show</param>
         private void NextPage(string DatabaseName)
         {
             Intent intent = new Intent(this, typeof(DatabaseActivity));

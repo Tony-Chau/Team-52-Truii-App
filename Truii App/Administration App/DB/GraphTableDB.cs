@@ -20,6 +20,11 @@ namespace Administration_App.DB
         string path;
         SqliteConnection connection;
         Context context;
+
+        /// <summary>
+        /// Initialise the database
+        /// </summary>
+        /// <param name="context">Allows it to know which activity it is calling it from</param>
         public GraphTableDB(Context context)
         {
             this.context = context;

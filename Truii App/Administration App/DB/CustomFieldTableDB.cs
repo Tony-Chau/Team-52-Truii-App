@@ -20,6 +20,11 @@ namespace Administration_App.DB
         string path;
         SqliteConnection connection;
         Context context;
+
+        /// <summary>
+        /// Initialise the database
+        /// </summary>
+        /// <param name="context">Allows it to know which activity it is calling it from</param>
         public CustomFieldTableDB(Context context)
         {
             this.context = context;
@@ -98,7 +103,7 @@ namespace Administration_App.DB
         /// <summary>
         /// Collects the data within the CustomFieldTable Database
         /// </summary>
-        /// <param name="fieldName">The name of the field</param>
+        /// <param name="fieldName">Name of the field</param>
         /// <returns>A list of integers of the TableID</returns>
         public List<int> readInt(string fieldName)
         {
@@ -184,6 +189,11 @@ namespace Administration_App.DB
             return count;
         }
 
+        /// <summary>
+        /// Converts any number that is either less than 0 or greater than 255
+        /// </summary>
+        /// <param name="colour">The colour code number</param>
+        /// <returns>The colour code number that could either be 0, 255 or a number between them</returns>
         private int ColourCheck(int colour)
         {
             if (colour < 0){

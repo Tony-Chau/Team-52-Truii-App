@@ -27,7 +27,7 @@ namespace Administration_App
             // Create your application here
             dsGrid = FindViewById<DSGridView>(Resource.Id.dataGrid);
             databaseName = Intent.GetStringExtra("DatabaseName");
-            SetTitle();
+            SetTitle(); //sets the title of the page
             if (databaseName == "User"){
                 OperateUser();
             }
@@ -46,6 +46,10 @@ namespace Administration_App
             }
             
         }
+
+        /// <summary>
+        ///  Creates a spreadsheet to show the UserTable
+        /// </summary>
         private void OperateUser()
         {
             if (dsGrid != null)
@@ -55,6 +59,9 @@ namespace Administration_App
             }
         }
 
+        /// <summary>
+        ///  Creates a spreadsheet to show the TableList
+        /// </summary>
         private void OperateTable()
         {
             if (dsGrid != null)
@@ -73,6 +80,9 @@ namespace Administration_App
             }
         }
 
+        /// <summary>
+        ///  Creates a spreadsheet to show the FieldTable
+        /// </summary>
         private void OperateField()
         {
             if (dsGrid != null)
@@ -82,6 +92,9 @@ namespace Administration_App
             }
         }
 
+        /// <summary>
+        /// Creates a spreadsheet to show the CustomFieldTable 
+        /// </summary>
         private void OperateCustomField()
         {
             if (dsGrid != null)
@@ -91,6 +104,9 @@ namespace Administration_App
             }
         }
 
+        /// <summary>
+        /// Sets the title of the page
+        /// </summary>
         private void SetTitle()
         {
             if (databaseName == "Table")
