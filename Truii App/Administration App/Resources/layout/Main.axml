@@ -29,8 +29,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnCustomField" />
     <Button
-        android:text="VariousTable"
+        android:text="Reset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnVarious" />
+        android:id="@+id/btnReset" />
+    <Button
+        android:text="Add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAdd" />
 </LinearLayout>

@@ -24,9 +24,7 @@ namespace Administration_App.Data.Grid
         public GraphDataTable(Context context, String Name) : base(Name)
         {
             GraphTableDB graphTabledb = new GraphTableDB(context);
-            graphTabledb.CreateTable();
-            graphTabledb.InsertData(1, "NickConstantine", DateTime.Now);
-
+            
             string graphID = "GraphID";
             string tableID = "TableID";
             string userName = "UserName";

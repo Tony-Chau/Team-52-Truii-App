@@ -44,7 +44,7 @@ namespace Administration_App
                 OperateCustomField();
             }
             else{
-                OperateVarious(databaseName);
+
             }
             //dsGrid.SetMinimumHeight(Resources.DisplayMetrics.HeightPixels / 2);
         }
@@ -91,11 +91,6 @@ namespace Administration_App
                 dsGrid.DataSource = new DataSet(this, databaseName);
                 dsGrid.TableName = "CustomField";
             }
-        }
-
-        private void OperateVarious(string TableName)
-        {
-
         }
     }
 }

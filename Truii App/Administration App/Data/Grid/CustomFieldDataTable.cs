@@ -24,9 +24,7 @@ namespace Administration_App.Data.Grid
         public CustomFieldDataTable(Context context, String Name) : base(Name)
         {
             CustomFieldTableDB customFieldTable = new CustomFieldTableDB(context);
-            customFieldTable.CreateTable();
-            customFieldTable.InsertData(1, 1, 0, 255, 0);
-
+            
             string customFieldID = "CustomFieldID";
             string fieldID = "FieldID";
             string graphID = "GraphID";

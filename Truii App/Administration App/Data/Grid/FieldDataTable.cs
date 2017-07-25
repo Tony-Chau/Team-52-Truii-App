@@ -24,9 +24,7 @@ namespace Administration_App.Data.Grid
         public FieldDataTable(Context context, String Name) : base(Name)
         {
             FieldTableDB fieldTable = new FieldTableDB(context);
-            fieldTable.CreateTable();
-            fieldTable.InsertData("GreenField", 1, "type");
-
+            
             string fieldName = "FieldName";
             string tableID = "TableID";
             string dataType = "DataType";

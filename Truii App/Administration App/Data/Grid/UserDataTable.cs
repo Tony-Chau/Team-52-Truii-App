@@ -24,9 +24,7 @@ namespace Administration_App.Data.Grid
         public UserDataTable(Context context, String Name) : base(Name)
         {
             UserTableDB userTabledb = new UserTableDB(context);
-            userTabledb.CreateTable();
-            userTabledb.InsertData("NickConstantine", "Green");
-
+            
             string userName = "UserName";
             string passWord = "Password";
 
