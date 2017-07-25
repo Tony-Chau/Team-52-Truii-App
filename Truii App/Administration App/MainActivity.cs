@@ -7,7 +7,7 @@ using System;
 
 namespace Administration_App
 {
-    [Activity(Label = "Administration_App", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Truii Administration App", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class MainActivity : Activity
     {
         UserTableDB userTabledb;
@@ -83,7 +83,7 @@ namespace Administration_App
             graphTabledb.CreateTable();
             fieldTable.CreateTable();
             customFieldTable.CreateTable();
-            Toast.MakeText(this, "All Databases has been reset", ToastLength.Long).Show();
+            Toast.MakeText(this, "All data within the databases has been reseted", ToastLength.Long).Show();
         }
         
         private void BtnAdd_Click(object sender, System.EventArgs e)
@@ -93,7 +93,7 @@ namespace Administration_App
             graphTabledb.InsertData(1, "NickConstantine", DateTime.Now);
             fieldTable.InsertData("GreenField", 1, "type");
             customFieldTable.InsertData(1, 1, 0, 255, 0);
-            Toast.MakeText(this, "Data has beed added to All Databases", ToastLength.Long).Show();
+            Toast.MakeText(this, "Data has beed added to all of the databases", ToastLength.Long).Show();
         }
 
         private void NextPage(string DatabaseName)

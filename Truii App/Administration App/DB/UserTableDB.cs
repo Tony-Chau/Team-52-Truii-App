@@ -24,7 +24,7 @@ namespace Administration_App.DB
         {
             this.context = context;
             docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            path = System.IO.Path.Combine(docsFolder, "TruiiUT.db");
+            path = System.IO.Path.Combine(docsFolder, "TruiiUserTable.db");
             connection = new SqliteConnection("Data Source=" + path);
         }
 

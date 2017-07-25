@@ -15,7 +15,7 @@ using Administration_App.DB;
 
 namespace Administration_App
 {
-    [Activity(Label = "DatabaseActivity")]
+    [Activity(Label = "Database", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class DatabaseActivity : Activity
     {
         DSGridView dsGrid;
@@ -27,6 +27,7 @@ namespace Administration_App
             // Create your application here
             dsGrid = FindViewById<DSGridView>(Resource.Id.dataGrid);
             databaseName = Intent.GetStringExtra("DatabaseName");
+            SetTitle();
             if (databaseName == "User"){
                 OperateUser();
             }
@@ -43,10 +44,7 @@ namespace Administration_App
             else if (databaseName == "CustomField"){
                 OperateCustomField();
             }
-            else{
-
-            }
-            //dsGrid.SetMinimumHeight(Resources.DisplayMetrics.HeightPixels / 2);
+            
         }
         private void OperateUser()
         {
@@ -90,6 +88,18 @@ namespace Administration_App
             {
                 dsGrid.DataSource = new DataSet(this, databaseName);
                 dsGrid.TableName = "CustomField";
+            }
+        }
+
+        private void SetTitle()
+        {
+            if (databaseName == "Table")
+            {
+                this.Title = databaseName + "List";
+            }
+            else
+            {
+                this.Title = databaseName + "Table";
             }
         }
     }
