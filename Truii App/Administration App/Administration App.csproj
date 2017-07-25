@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -82,7 +82,8 @@
     <Compile Include="Data\Grid\GraphDataTable.cs" />
     <Compile Include="Data\Grid\TableListDataTable.cs" />
     <Compile Include="Data\Grid\UserDataTable.cs" />
-    <Compile Include="DB\FieldTable.cs" />
+    <Compile Include="DB\CustomFieldTableDB.cs" />
+    <Compile Include="DB\FieldTableDB.cs" />
     <Compile Include="DB\GraphTableDB.cs" />
     <Compile Include="DB\UserTableDB.cs" />
     <Compile Include="MainActivity.cs" />

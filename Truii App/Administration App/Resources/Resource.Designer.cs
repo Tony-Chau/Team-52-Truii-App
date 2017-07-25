@@ -65,6 +65,9 @@ namespace Administration_App
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050005
+			public const int btnCustomField = 2131034117;
+			
 			// aapt resource value: 0x7f050004
 			public const int btnField = 2131034116;
 			
@@ -77,8 +80,8 @@ namespace Administration_App
 			// aapt resource value: 0x7f050001
 			public const int btnUser = 2131034113;
 			
-			// aapt resource value: 0x7f050005
-			public const int btnVarious = 2131034117;
+			// aapt resource value: 0x7f050006
+			public const int btnVarious = 2131034118;
 			
 			// aapt resource value: 0x7f050000
 			public const int dataGrid = 2131034112;

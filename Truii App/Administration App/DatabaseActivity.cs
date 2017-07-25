@@ -39,6 +39,9 @@ namespace Administration_App
             else if(databaseName == "Table"){
                 OperateTable();
             }
+            else if (databaseName == "CustomField"){
+                OperateCustomField();
+            }
             else{
                 OperateVarious(databaseName);
             }
@@ -77,6 +80,15 @@ namespace Administration_App
             {
                 dsGrid.DataSource = new DataSet(this, databaseName);
                 dsGrid.TableName = "Field";
+            }
+        }
+
+        private void OperateCustomField()
+        {
+            if (dsGrid != null)
+            {
+                dsGrid.DataSource = new DataSet(this, databaseName);
+                dsGrid.TableName = "CustomField";
             }
         }
 

@@ -23,7 +23,7 @@ namespace Administration_App.Data.Grid
         
         public FieldDataTable(Context context, String Name) : base(Name)
         {
-            FieldTable fieldTable = new FieldTable(context);
+            FieldTableDB fieldTable = new FieldTableDB(context);
             fieldTable.CreateTable();
             fieldTable.InsertData("GreenField", 1, "type");
 

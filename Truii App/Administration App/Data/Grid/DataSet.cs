@@ -30,7 +30,10 @@ namespace Administration_App.Data.Grid
             else if (tableName == "Field"){
                 Tables.Add(new FieldDataTable(EntryCode, "Field"));
             }
-            else{
+            else if(tableName == "CustomField")
+            {
+                //Tables.Add(new FieldDataTable(EntryCode, "Field"));
+            }else{
 
             }
             

@@ -62,7 +62,7 @@ namespace Administration_App.DB
 
         
         /// <summary>
-        /// Creates the TableName database within the phone's library
+        /// Creates the UserTable database within the phone's library
         /// </summary>
         public async void CreateTable()
         {

@@ -14,51 +14,19 @@ using Java.IO;
 
 namespace Administration_App.DB
 {
-    public class GraphTableDB
+    public class FieldTableDB
     {
         string docsFolder;
         string path;
         SqliteConnection connection;
         Context context;
-        public GraphTableDB(Context context)
+        
+        public FieldTableDB(Context context)
         {
             this.context = context;
             docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
             path = System.IO.Path.Combine(docsFolder, "Truii.db");
             connection = new SqliteConnection("Data Source=" + path);
-        }
-
-        /// <summary>
-        /// Collects the data from the database depending on the name of the field. 
-        /// This only collects data if their type is a DateTime format
-        /// </summary>
-        /// <param name="fieldName">Name of the Field</param>
-        /// <returns>A list of DataTime data from the database that was recorded</returns>
-        public DateTime readDateTime(string fieldName, int index)
-        {
-            List<DateTime> data = new List<DateTime>();
-            connection.Open();
-            try
-            {
-                using (var command = connection.CreateCommand())
-                {
-
-                    command.CommandText = "SELECT * FROM GraphTable";
-                    var read = command.ExecuteReader();
-                    while (read.Read())
-                    {
-                        data.Add((DateTime)read[fieldName]);
-                    }
-                    connection.Close();
-                    return data[index];
-                }
-            }
-            catch (Exception ex)
-            {
-                Toast.MakeText(context, ex.Message, ToastLength.Long).Show();
-            }
-            connection.Close();
-            return new DateTime();
         }
 
         /// <summary>
@@ -75,7 +43,7 @@ namespace Administration_App.DB
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "SELECT * FROM GraphTable";
+                    command.CommandText = "SELECT * FROM FieldTable";
                     var read = command.ExecuteReader();
                     while (read.Read())
                     {
@@ -94,10 +62,11 @@ namespace Administration_App.DB
         }
 
         /// <summary>
-        /// Collects the list of integers within the TableID
+        /// Collects the data from the database depending on the name of the field. 
+        /// This only collects data if their type is a string format or a primary key
         /// </summary>
-        /// <param name="fieldName">The name of the field with the ID</param>
-        /// <returns>A list of integers of the TableID</returns>
+        /// <param name="fieldName">Name of the field</param>
+        /// <returns>A list string data from the database that was recorded</returns>
         public List<int> readInt(string fieldName)
         {
             List<int> data = new List<int>();
@@ -106,7 +75,7 @@ namespace Administration_App.DB
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "SELECT * FROM GraphTable";
+                    command.CommandText = "SELECT * FROM FieldTable";
                     var read = command.ExecuteReader();
                     while (read.Read())
                     {
@@ -123,9 +92,30 @@ namespace Administration_App.DB
             connection.Close();
             return data;
         }
-        
+
+
+        public void InsertData(string FieldName, int TableID, string DataType)
+        {
+            connection.Open();
+            try
+            {
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = string.Format("INSERT INTO FieldTable(FieldName, TableID, DataType) VALUES( \"{0}\", {1}, \"{2}\")", FieldName, TableID, DataType);
+                    var rowcount = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(this.context, ex.Message, ToastLength.Long).Show();
+            }
+            connection.Close();
+        }
+
+
+
         /// <summary>
-        /// Creates the GraphTable database within the phone's library
+        /// Creates the FieldTable database within the phone's library
         /// </summary>
         public async void CreateTable()
         {
@@ -146,7 +136,7 @@ namespace Administration_App.DB
                     await connect.OpenAsync();
                     using (var command = connect.CreateCommand())
                     {
-                        command.CommandText = "CREATE TABLE GraphTable(GraphID INTEGER PRIMARY KEY AUTOINCREMENT, TableID INTEGER NOT NULL, UserName VARCHAR(255), DateCreated DATETIME NOT NULL)";
+                        command.CommandText = "CREATE TABLE FieldTable(FieldID INTEGER PRIMARY KEY AUTOINCREMENT, FieldName VARCHAR(255) NOT NULL, TableID INT NOT NULL, DataType VARCHAR(255) NOT NULL)";
                         command.CommandType = System.Data.CommandType.Text;
                         await command.ExecuteNonQueryAsync();
                     }
@@ -159,30 +149,7 @@ namespace Administration_App.DB
             connection.Close();
         }
 
-        /// <summary>
-        /// Insert the data to the GraphTable database
-        /// </summary>
-        /// <param name="TableId">The Identification of the Table</param>
-        /// <param name="UserName">The username of the author of the graph</param>
-        /// <param name="DateCreated">The date/time it was created</param>
-        public void InsertData(int TableId, string UserName, DateTime DateCreated)
-        {
-            connection.Open();
-            try
-            {
-                using (var command = connection.CreateCommand())
-                {
-                    command.CommandText = string.Format("INSERT INTO GraphTable(TableId, UserName, DateCreated) VALUES ( {0}, \"{1}\", {2})", TableId, UserName, DateCreated);
-                    var rowcount = command.ExecuteNonQuery(); 
-                }
-            }
-            catch (Exception ex)
-            {
-                Toast.MakeText(this.context, ex.Message, ToastLength.Long).Show();
-            }
-            connection.Close();
-        }
-        
+
         /// <summary>
         /// Counts the number of rows within the database
         /// </summary>
@@ -195,7 +162,7 @@ namespace Administration_App.DB
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "Select * FROM GraphTable";
+                    command.CommandText = "Select * FROM FieldTable";
                     var read = command.ExecuteReader();
                     while (read.Read())
                     {

@@ -24,6 +24,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnField" />
     <Button
+        android:text="CustomFieldTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCustomField" />
+    <Button
         android:text="VariousTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
