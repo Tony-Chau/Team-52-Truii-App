@@ -32,7 +32,7 @@ namespace Administration_App.Data.Grid
             }
             else if(tableName == "CustomField")
             {
-                //Tables.Add(new FieldDataTable(EntryCode, "Field"));
+                Tables.Add(new CustomFieldDataTable(EntryCode, "CustomField"));
             }else{
 
             }

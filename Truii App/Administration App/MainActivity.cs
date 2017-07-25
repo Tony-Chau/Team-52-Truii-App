@@ -27,19 +27,9 @@ namespace Administration_App
             btnCustomField.Click += BtnCustomField_Click;
         }
 
-        private void BtnCustomField_Click(object sender, System.EventArgs e)
+        private void BtnUser_Click(object sender, System.EventArgs e)
         {
-            NextPage("CustomField");
-        }
-
-        private void BtnField_Click(object sender, System.EventArgs e)
-        {
-            NextPage("Field");
-        }
-
-        private void BtnGraph_Click(object sender, System.EventArgs e)
-        {
-            NextPage("Graph");
+            NextPage("User");
         }
 
         private void BtnTable_Click(object sender, System.EventArgs e)
@@ -47,10 +37,21 @@ namespace Administration_App
             NextPage("Table");
         }
 
-        private void BtnUser_Click(object sender, System.EventArgs e)
+        private void BtnGraph_Click(object sender, System.EventArgs e)
         {
-            NextPage("User");
+            NextPage("Graph");
         }
+
+        private void BtnField_Click(object sender, System.EventArgs e)
+        {
+            NextPage("Field");
+        }
+
+        private void BtnCustomField_Click(object sender, System.EventArgs e)
+        {
+            NextPage("CustomField");
+        }
+
         private void NextPage(string DatabaseName)
         {
             Intent intent = new Intent(this, typeof(DatabaseActivity));

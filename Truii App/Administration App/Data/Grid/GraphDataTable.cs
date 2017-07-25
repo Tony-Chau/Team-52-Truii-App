@@ -23,9 +23,9 @@ namespace Administration_App.Data.Grid
         
         public GraphDataTable(Context context, String Name) : base(Name)
         {
-            //GraphTableDB graphTabledb = new GraphTableDB(context);
-            //graphTabledb.CreateTable();
-            //graphTabledb.InsertData();
+            GraphTableDB graphTabledb = new GraphTableDB(context);
+            graphTabledb.CreateTable();
+            graphTabledb.InsertData(1, "NickConstantine", DateTime.Now);
 
             string graphID = "GraphID";
             string tableID = "TableID";
@@ -35,8 +35,8 @@ namespace Administration_App.Data.Grid
             var dataColumns = new Dictionary<string, float>();
             dataColumns.Add("  " + graphID, 100);
             dataColumns.Add(tableID, 100);
-            dataColumns.Add(userName, 100);
-            dataColumns.Add(dateCreated, 150);
+            dataColumns.Add(userName, 150);
+            dataColumns.Add(dateCreated, 300);
 
             foreach (var key in dataColumns.Keys)
             {
@@ -49,15 +49,18 @@ namespace Administration_App.Data.Grid
                 Columns.Add(dc);
             }
 
-            int row = 3;
+            List<string> PrimaryKeyList = graphTabledb.readString(graphID);
+            List<string> TableIDList = graphTabledb.readString(tableID);
+            List<string> UserNameList = graphTabledb.readString(userName);
+            int row = graphTabledb.Count();
             for (int i = 0; i < row; i += 1)
             {
                 var dataRows = new DSDataRow();
                 
-                dataRows["  " + graphID] = "  Graph" + i+1;
-                dataRows[tableID] = "Table" + i+1;
-                dataRows[userName] = "User" + i+1;
-                dataRows[dateCreated] = "2017/07/" + i+1;
+                dataRows["  " + graphID] = "  " + PrimaryKeyList[i];
+                dataRows[tableID] = TableIDList[i];
+                dataRows[userName] = UserNameList[i];
+                dataRows[dateCreated] = graphTabledb.readDateTime(dateCreated, i);
 
                 Rows.Add(dataRows);
             }

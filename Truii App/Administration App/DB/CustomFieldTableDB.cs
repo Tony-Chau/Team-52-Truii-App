@@ -50,7 +50,7 @@ namespace Administration_App.DB
                     await connect.OpenAsync();
                     using (var command = connect.CreateCommand())
                     {
-                        command.CommandText = "CREATE TABLE GraphTable(CustomFieldID INTEGER PRIMARY KEY AUTOINCREMENT, FieldID INTEGER NOT NULL, GraphID INTEGER NOT NULL, Red INTEGER NOT NULL, Green INTEGER NOT NULL, Blue INTEGER NOT NULL)";
+                        command.CommandText = "CREATE TABLE CustomFieldTable(CustomFieldID INTEGER PRIMARY KEY AUTOINCREMENT, FieldID INTEGER NOT NULL, GraphID INTEGER NOT NULL, Red INTEGER NOT NULL, Green INTEGER NOT NULL, Blue INTEGER NOT NULL)";
                         command.CommandType = System.Data.CommandType.Text;
                         await command.ExecuteNonQueryAsync();
                     }

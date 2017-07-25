@@ -33,8 +33,8 @@ namespace Administration_App.Data.Grid
             var dataColumns = new Dictionary<string, float>();
             dataColumns.Add("  " + tableID, 100);
             dataColumns.Add(tableName, 100);
-            dataColumns.Add(userName, 100);
-            dataColumns.Add(dateCreated, 150);
+            dataColumns.Add(userName, 150);
+            dataColumns.Add(dateCreated, 300);
 
             foreach (var key in dataColumns.Keys)
             {

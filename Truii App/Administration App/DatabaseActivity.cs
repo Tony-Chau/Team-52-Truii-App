@@ -30,14 +30,15 @@ namespace Administration_App
             if (databaseName == "User"){
                 OperateUser();
             }
+            else if (databaseName == "Table")
+            {
+                OperateTable();
+            }
             else if(databaseName == "Graph"){
                 OperateGraph();
             }
             else if(databaseName == "Field"){
                 OperateField();
-            }
-            else if(databaseName == "Table"){
-                OperateTable();
             }
             else if (databaseName == "CustomField"){
                 OperateCustomField();
@@ -56,21 +57,21 @@ namespace Administration_App
             }
         }
 
-        private void OperateGraph()
-        {
-            if (dsGrid != null)
-            {
-                dsGrid.DataSource = new DataSet(this, databaseName);
-                dsGrid.TableName = "Graph";
-            }
-        }
-        
         private void OperateTable()
         {
             if (dsGrid != null)
             {
                 dsGrid.DataSource = new DataSet(this, databaseName);
                 dsGrid.TableName = "Table";
+            }
+        }
+
+        private void OperateGraph()
+        {
+            if (dsGrid != null)
+            {
+                dsGrid.DataSource = new DataSet(this, databaseName);
+                dsGrid.TableName = "Graph";
             }
         }
 

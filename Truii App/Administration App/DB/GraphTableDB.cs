@@ -172,7 +172,7 @@ namespace Administration_App.DB
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = string.Format("INSERT INTO GraphTable(TableId, UserName, DateCreated) VALUES ( {0}, \"{1}\", {2})", TableId, UserName, DateCreated);
+                    command.CommandText = string.Format("INSERT INTO GraphTable(TableId, UserName, DateCreated) VALUES ( {0}, \"{1}\", {2})", TableId, UserName, DateCreated.ToString("yyyy-mm-dd"));
                     var rowcount = command.ExecuteNonQuery(); 
                 }
             }

@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v24</xs:documentation>
-    <xs:documentation>24/07/2017 2:49:29 PM</xs:documentation>
+    <xs:documentation>25/07/2017 5:33:38 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -16939,6 +16939,7 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="@+id/" />
             <xs:enumeration value="@+id/stackView1" />
+            <xs:enumeration value="@id/btnCustomField" />
             <xs:enumeration value="@id/btnField" />
             <xs:enumeration value="@id/btnGraph" />
             <xs:enumeration value="@id/btnTable" />
