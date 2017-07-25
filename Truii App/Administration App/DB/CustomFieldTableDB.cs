@@ -137,12 +137,15 @@ namespace Administration_App.DB
         /// <param name="Blue">The Blue of the RGB colour model (must be between 0 to 255)</param>
         public void InsertData(int FieldID, int GraphID, int Red, int Green, int Blue)
         {
+            Red = ColourCheck(Red);
+            Green = ColourCheck(Green);
+            Blue = ColourCheck(Blue);
             connection.Open();
             try
             {
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = string.Format("INSERT INTO CustomFieldTable(FieldID, GraphID, Red, Green, Blue) VALUES ( {0}, {1}, {2}, {3})", FieldID, GraphID, Red, Green, Blue);
+                    command.CommandText = string.Format("INSERT INTO CustomFieldTable(FieldID, GraphID, Red, Green, Blue) VALUES ( {0}, {1}, {2}, {3}, {4})", FieldID, GraphID, Red, Green, Blue);
                     var rowcount = command.ExecuteNonQuery();
                 }
             }
@@ -181,5 +184,15 @@ namespace Administration_App.DB
             return count;
         }
 
+        private int ColourCheck(int colour)
+        {
+            if (colour < 0){
+                return 0;
+            }
+            else if(colour > 255){
+                return 255;
+            }
+            return colour;
+        }
     }
 }
