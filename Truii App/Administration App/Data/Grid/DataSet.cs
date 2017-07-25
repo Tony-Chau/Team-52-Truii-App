@@ -15,6 +15,11 @@ namespace Administration_App.Data.Grid
 {
     public class DataSet : DSDataSet
     {
+        /// <summary>
+        /// The Function used to Generate the Spreadsheet
+        /// </summary>
+        /// <param name="EntryCode">Allows it to know which activity it is calling it from</param>
+        /// <param name="tableName">Used to Determine which spreadsheet to create and open</param>
         public DataSet(Context EntryCode, string tableName)
         {
             if (tableName == "User")

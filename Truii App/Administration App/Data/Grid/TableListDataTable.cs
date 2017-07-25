@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using DSoft.Datatypes.Grid.Data;
+using Administration_App.DB;
 
 namespace Administration_App.Data.Grid
 {
@@ -19,7 +20,14 @@ namespace Administration_App.Data.Grid
         {
 
         }
-        
+
+        /// <summary>
+        /// Initialises TableListDataTable
+        /// Pulls Data from the database and generates columns and rows to match the said data
+        /// and inputs that dta afterwards 
+        /// </summary>
+        /// <param name="context">Allows it to know which activity it is calling it from</param>
+        /// <param name="Name">Used to Determine which spreadsheet is to be openned</param>
         public TableListDataTable(Context context, String Name) : base(Name)
         {
             TableListDB tableListdb = new TableListDB(context);

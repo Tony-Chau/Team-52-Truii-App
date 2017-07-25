@@ -20,7 +20,14 @@ namespace Administration_App.Data.Grid
         {
 
         }
-        
+
+        /// <summary>
+        /// Initialises UserDataTable
+        /// Pulls Data from the database and generates columns and rows to match the said data
+        /// and inputs that dta afterwards 
+        /// </summary>
+        /// <param name="context">Allows it to know which activity it is calling it from</param>
+        /// <param name="Name">Used to Determine which spreadsheet is to be openned</param>
         public UserDataTable(Context context, String Name) : base(Name)
         {
             UserTableDB userTabledb = new UserTableDB(context);

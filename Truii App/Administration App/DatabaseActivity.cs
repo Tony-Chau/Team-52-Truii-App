@@ -71,6 +71,9 @@ namespace Administration_App
             }
         }
 
+        /// <summary>
+        /// Creates a spreadsheet to show the GraphTable 
+        /// </summary>
         private void OperateGraph()
         {
             if (dsGrid != null)
