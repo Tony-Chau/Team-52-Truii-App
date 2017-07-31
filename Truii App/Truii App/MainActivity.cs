@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using Android.Content;
 
 namespace Truii_App
 {
@@ -10,10 +11,19 @@ namespace Truii_App
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            // Set our view from the "main" layout resource
             SetContentView (Resource.Layout.Main);
+            NextPage();
         }
+
+        /// <summary>
+        /// Takes User to the Login Page
+        /// </summary>
+        private void NextPage()
+        {
+            StartActivity(new Intent(this, typeof(LoginActivity)));
+            Finish();
+        }
+
     }
 }
 
