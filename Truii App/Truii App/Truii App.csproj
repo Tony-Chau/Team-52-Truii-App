@@ -65,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\Oswald-Regular.ttf" />
-    <AndroidAsset Include="Assets\fonts\ARBERKLEY.ttf" />
+    <AndroidAsset Include="Assets\fonts\Arberkley.ttf" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />

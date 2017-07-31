@@ -13,18 +13,18 @@ using UK.CO.Chrisjenx.Calligraphy;
 
 namespace Truii_App.Functions
 {
-    [Activity(Label = "FontFunction")]
-    public class FontFunction : Activity
+    public class FontFunction
     {
-        protected override void OnCreate(Bundle savedInstanceState)
+        public FontFunction()
         {
-            base.OnCreate(savedInstanceState);
-
-            // Create your application here
         }
-        protected override void AttachBaseContext(Android.Content.Context @base)
+
+        public void CreateFont(string fontName)
         {
-            base.AttachBaseContext(CalligraphyContextWrapper.Wrap(@base));
+            CalligraphyConfig.InitDefault(new CalligraphyConfig.Builder()
+            .SetDefaultFontPath("fonts/" + fontName + ".ttf")
+            .SetFontAttrId(Resource.Attribute.fontPath)
+            .Build());
         }
     }
 }
