@@ -2,6 +2,8 @@
 using Android.Widget;
 using Android.OS;
 using Android.Content;
+using UK.CO.Chrisjenx.Calligraphy;
+using Truii_App.Functions;
 
 namespace Truii_App
 {
@@ -12,6 +14,7 @@ namespace Truii_App
         {
             base.OnCreate(bundle);
             SetContentView (Resource.Layout.Main);
+            FontFunction font = new FontFunction();
             NextPage();
         }
 
@@ -22,6 +25,11 @@ namespace Truii_App
         {
             StartActivity(new Intent(this, typeof(LoginActivity)));
             Finish();
+        }
+
+        protected override void AttachBaseContext(Context @base)
+        {
+            base.AttachBaseContext(CalligraphyContextWrapper.Wrap(@base));
         }
 
     }

@@ -31,8 +31,6 @@ namespace Truii_App
             btnLogin.Click += BtnLogin_Click;
             // Create your application here
             FontFunction font = new FontFunction();
-            font.CreateFont("Oswald-Regular");
-            font.CreateFont("Arberkley");
         }
         protected override void AttachBaseContext(Context @base)
         {
