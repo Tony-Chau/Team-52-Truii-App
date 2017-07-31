@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Graphics;
 using Android.Renderscripts;
+using UK.CO.Chrisjenx.Calligraphy;
 
 namespace Truii_App
 {
@@ -28,6 +29,15 @@ namespace Truii_App
             var btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
             btnLogin.Click += BtnLogin_Click;
             // Create your application here
+            /*
+            CalligraphyConfig.InitDefault(new CalligraphyConfig.Builder()
+                .SetDefaultFontPath("fonts/ARBERKLEY.ttf")
+                .SetFontAttrId(Resource.Attribute.fontPath)
+                .Build());*/
+        }
+        protected override void AttachBaseContext(Context @base)
+        {
+            base.AttachBaseContext( CalligraphyContextWrapper.Wrap(@base));
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
