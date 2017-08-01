@@ -1,3 +1,3 @@
 <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:minWidth="25px" android:minHeight="25px" xmlns:android="http://schemas.android.com/apk/res/android"><!--
-  Look at fontPath and u can make it visible if and turn off the next page function if you want to see it work
+  Look at fontPath and you can make it visible if you want and turn off the next page function if you want to see it work
   --><TextView android:text="Medium Text" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/textView1" fontPath="fonts/Oswald-Regular.ttf" tools:visibility="invisible" xmlns:tools="http://schemas.android.com/tools" /></LinearLayout>

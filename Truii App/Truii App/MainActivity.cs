@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Content;
 using UK.CO.Chrisjenx.Calligraphy;
 using Truii_App.Functions;
+using Truii_App.DB.Local;
 
 namespace Truii_App
 {
@@ -15,16 +16,36 @@ namespace Truii_App
             base.OnCreate(bundle);
             SetContentView (Resource.Layout.Main);
             FontFunction font = new FontFunction();
-            NextPage();
+            UserTableDB User = new UserTableDB(this);
+            NextPage(User.Count() == 0);
         }
 
         /// <summary>
-        /// Takes User to the Login Page
+        /// Takes users to the next page depending on the check
         /// </summary>
-        private void NextPage()
+        /// <param name="check"></param>
+        private void NextPage(bool check)
         {
-            StartActivity(new Intent(this, typeof(LoginActivity)));
-            Finish();
+            if (check)
+            {
+                StartActivity(new Intent(this, typeof(LoginActivity)));
+                Finish();
+            }else
+            {
+                //go to the home page
+            }
+        }
+
+        /// <summary>
+        /// Checks if the database exist, if not then it will generate one
+        /// </summary>
+        private void CheckIfDBExist()
+        {
+            DatabaseFunction database = new DatabaseFunction(this);
+            if (!database.CheckIfDatabaseExist())
+            {
+                database.CreateDatabase();
+            }
         }
 
         protected override void AttachBaseContext(Context @base)

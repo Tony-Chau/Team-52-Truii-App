@@ -6,7 +6,7 @@
     android:minWidth="25px"
     android:minHeight="25px">
   <!--
-  Look at fontPath and u can make it visible if and turn off the next page function if you want to see it work
+  Look at fontPath and you can make it visible if you want and turn off the next page function if you want to see it work
   -->
     <TextView
         android:text="Medium Text"

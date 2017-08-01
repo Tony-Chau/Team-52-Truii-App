@@ -13,6 +13,7 @@ using Android.Graphics;
 using Android.Renderscripts;
 using UK.CO.Chrisjenx.Calligraphy;
 using Truii_App.Functions;
+using static Android.Views.ViewGroup;
 
 namespace Truii_App
 {
@@ -24,13 +25,15 @@ namespace Truii_App
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            //You do not need to touch the font part
+            FontFunction font = new FontFunction();
             SetContentView(Resource.Layout.Login);
             txtUsername = FindViewById<TextView>(Resource.Id.txtUser);
             txtPassword = FindViewById<TextView>(Resource.Id.txtPassword);
             var btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
             btnLogin.Click += BtnLogin_Click;
             // Create your application here
-            FontFunction font = new FontFunction();
+            
         }
         protected override void AttachBaseContext(Context @base)
         {
