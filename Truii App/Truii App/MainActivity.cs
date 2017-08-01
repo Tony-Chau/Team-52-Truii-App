@@ -17,6 +17,7 @@ namespace Truii_App
             SetContentView (Resource.Layout.Main);
             FontFunction font = new FontFunction();
             UserTableDB User = new UserTableDB(this);
+            CheckIfDBExist();
             NextPage(User.Count() == 0);
         }
 

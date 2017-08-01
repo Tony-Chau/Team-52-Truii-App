@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -88,6 +88,8 @@
     <AndroidAsset Include="Assets\fonts\Oswald-Regular.ttf" />
     <AndroidAsset Include="Assets\fonts\Arberkley.ttf" />
     <AndroidAsset Include="Assets\fonts\Oswald-Stencil.ttf" />
+    <AndroidAsset Include="Assets\fonts\Times_New_Roman.ttf" />
+    <AndroidAsset Include="Assets\fonts\Arial.ttf" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />

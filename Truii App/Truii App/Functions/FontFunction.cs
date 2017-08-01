@@ -23,6 +23,9 @@ namespace Truii_App.Functions
             CreateFont("Oswald-Regular");
             CreateFont("Oswald-Stencil");
             CreateFont("Arberkley");
+            CreateFont("Arial");
+            //The latest font that was inputted will be the default font
+            CreateFont("Times_New_Roman");
         }
 
         private void CreateFont(string fontName)

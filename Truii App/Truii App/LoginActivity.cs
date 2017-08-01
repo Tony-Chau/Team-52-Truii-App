@@ -25,9 +25,8 @@ namespace Truii_App
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            //You do not need to touch the font part
-            FontFunction font = new FontFunction();
             SetContentView(Resource.Layout.Login);
+            FontFunction font = new FontFunction();
             txtUsername = FindViewById<EditText>(Resource.Id.txtUser);
             txtPassword = FindViewById<EditText>(Resource.Id.txtPassword);
             var btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
