@@ -29,6 +29,9 @@ namespace Truii_App.Functions
             TableList = new TableListDB(context);
         }
 
+        /// <summary>
+        /// Creates the all the database within the app (except VariousTables)
+        /// </summary>
         public void CreateDatabase()
         {
             UserTable.CreateTable();
@@ -38,11 +41,22 @@ namespace Truii_App.Functions
             TableList.CreateTable();
         }
         
+        /// <summary>
+        /// Checks if one of the .db file is located within the phone
+        /// </summary>
+        /// <returns>a confirmation if the file exist</returns>
         public bool CheckIfDatabaseExist()
         {
             string docsFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
             string path = System.IO.Path.Combine(docsFolder, "TruiiUserTable.db");
             return File.Exists(path);
         }
+
+        public bool UserAndPasswordCheck(string User, string password)
+        {
+            return false;
+        }
+
+
     }
 }
