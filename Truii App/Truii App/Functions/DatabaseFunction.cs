@@ -17,13 +17,25 @@ namespace Truii_App.Functions
     public class DatabaseFunction
     {
         UserTableDB UserTable;
+        CustomFieldTableDB CustomFieldTable;
+        FieldTableDB FieldTable;
+        GraphTableDB GraphTable;
+        TableListDB TableList;
         public DatabaseFunction(Context context) {
             UserTable = new UserTableDB(context);
+            CustomFieldTable = new CustomFieldTableDB(context);
+            FieldTable = new FieldTableDB(context);
+            GraphTable = new GraphTableDB(context);
+            TableList = new TableListDB(context);
         }
 
         public void CreateDatabase()
         {
             UserTable.CreateTable();
+            CustomFieldTable.CreateTable();
+            FieldTable.CreateTable();
+            GraphTable.CreateTable();
+            TableList.CreateTable();
         }
         
         public bool CheckIfDatabaseExist()

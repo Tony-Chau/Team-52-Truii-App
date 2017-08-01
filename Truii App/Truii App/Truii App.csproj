@@ -67,6 +67,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\Local\CustomFieldTableDB.cs" />
+    <Compile Include="DB\Local\FieldTableDB.cs" />
+    <Compile Include="DB\Local\GraphTableDB.cs" />
+    <Compile Include="DB\Local\TableListDB.cs" />
     <Compile Include="DB\Local\UserTableDB.cs" />
     <Compile Include="Functions\DatabaseFunction.cs" />
     <Compile Include="Functions\FontFunction.cs" />
@@ -79,6 +83,7 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\Oswald-Regular.ttf" />
     <AndroidAsset Include="Assets\fonts\Arberkley.ttf" />
+    <AndroidAsset Include="Assets\fonts\Oswald-Stencil.ttf" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />

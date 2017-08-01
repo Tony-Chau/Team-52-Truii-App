@@ -21,6 +21,7 @@ namespace Truii_App.Functions
         public FontFunction()
         {
             CreateFont("Oswald-Regular");
+            CreateFont("Oswald-Stencil");
             CreateFont("Arberkley");
         }
 
