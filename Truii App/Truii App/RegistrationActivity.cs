@@ -17,39 +17,35 @@ using static Android.Views.ViewGroup;
 
 namespace Truii_App
 {
-    [Activity(Label = "LoginActivity", Theme = "@android:style/Theme.NoTitleBar.Fullscreen")]
-    public class LoginActivity : Activity
+    [Activity(Label = "RegisterActivity", Theme = "@android:style/Theme.NoTitleBar.Fullscreen")]
+    public class RegistrationActivity : Activity
     {
-        EditText txtUsername;
+        EditText txtEmail;
         EditText txtPassword;
+        EditText txtConfirmPassword;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             //You do not need to touch the font part
             FontFunction font = new FontFunction();
-            SetContentView(Resource.Layout.Login);
-            txtUsername = FindViewById<EditText>(Resource.Id.txtUser);
+            SetContentView(Resource.Layout.Registration);
+            txtEmail = FindViewById<EditText>(Resource.Id.txtEmail);
             txtPassword = FindViewById<EditText>(Resource.Id.txtPassword);
-            var btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
-            btnLogin.Click += BtnLogin_Click;
+            txtConfirmPassword = FindViewById<EditText>(Resource.Id.txtPassword);
             var btnRegister = FindViewById<Button>(Resource.Id.btnRegister);
             btnRegister.Click += BtnRegister_Click;
             // Create your application here
-
+            
         }
         protected override void AttachBaseContext(Context @base)
         {
             base.AttachBaseContext( CalligraphyContextWrapper.Wrap(@base));
         }
 
-        private void BtnLogin_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void BtnRegister_Click(object sender, EventArgs e)
         {
-            StartActivity(new Intent(this, typeof(RegistrationActivity)));
+            throw new NotImplementedException();
         }
     }
 }
